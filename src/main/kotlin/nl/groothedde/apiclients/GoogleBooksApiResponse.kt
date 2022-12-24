@@ -5,7 +5,7 @@ import nl.groothedde.serialization.TemporalSerializer
 import java.time.temporal.Temporal
 
 @Serializable
-data class BookVolumesResponse(val items: List<BookVolume>)
+data class BookVolumesResponse(val items: List<BookVolume>? = emptyList())
 
 @Serializable
 data class BookVolume(val volumeInfo: VolumeInfo)

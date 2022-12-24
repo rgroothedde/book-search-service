@@ -5,8 +5,8 @@ import nl.groothedde.apiclients.GoogleBooksApiClient
 
 class BoekService(private val googleBooksApiClient: GoogleBooksApiClient = GoogleBooksApiClient()) {
     suspend fun findBoeken(query: String, language: String?): List<Boek> {
-        return googleBooksApiClient.getBooks(query, language)
-            .items.map { toBoek(it) }
+        return googleBooksApiClient.searchBooks(query, language)
+            .items?.map { toBoek(it) } ?: emptyList()
     }
 
     private fun toBoek(bookVolume: BookVolume) =

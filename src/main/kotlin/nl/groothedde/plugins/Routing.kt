@@ -6,14 +6,14 @@ import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import nl.groothedde.domain.BoekService
 
-fun Application.configureRouting(booksService: BoekService) {
+fun Application.configureRouting(boekService: BoekService) {
 
     routing {
         get("/boeken") {
-            val query = call.parameters["tekst"] ?: throw BadRequestException("Tekst zoek parameter is verplicht")
+            val query = call.parameters["zoektekst"] ?: throw BadRequestException("zoektekst parameter is verplicht")
 
             call.respond(
-                booksService.findBoeken(
+                boekService.findBoeken(
                     query = query,
                     language = call.parameters["taal"]
                 )

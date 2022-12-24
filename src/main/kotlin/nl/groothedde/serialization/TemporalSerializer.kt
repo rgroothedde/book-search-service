@@ -7,6 +7,7 @@ import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 import java.time.LocalDate
+import java.time.Year
 import java.time.YearMonth
 import java.time.format.DateTimeFormatter
 import java.time.temporal.Temporal
@@ -19,7 +20,10 @@ object TemporalSerializer : KSerializer<Temporal> {
         return try {
             LocalDate.parse(stringValue)
         } catch (e: Throwable){
-            YearMonth.parse(stringValue)
+            try { YearMonth.parse(stringValue)}
+            catch(e:Throwable){
+                Year.parse(stringValue)
+            }
         }
     }
 

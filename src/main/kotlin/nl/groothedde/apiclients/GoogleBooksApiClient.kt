@@ -31,7 +31,7 @@ class GoogleBooksApiClient(engine: HttpClientEngine = HttpClient().engine) {
 
     }
 
-    suspend fun getBooks(query: String, language: String?): BookVolumesResponse =
+    suspend fun searchBooks(query: String, language: String?): BookVolumesResponse =
         httpClient.get("https://books.googleapis.com/books/v1/volumes") {
             url {
                 parameters.append("orderBy", "newest")
