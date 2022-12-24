@@ -10,10 +10,10 @@ import java.time.temporal.Temporal
 import kotlin.test.assertEquals
 
 
-class TemporalSerializerTest {
+class PartialDateSerializerTest {
 
     @Serializable
-    data class TemporalWrapper(@Serializable(with = TemporalSerializer::class) val date: Temporal)
+    data class TemporalWrapper(@Serializable(with = PartialDateSerializer::class) val date: Temporal)
 
     @Test
     fun `String with only month and year becomes YearMonth`() {

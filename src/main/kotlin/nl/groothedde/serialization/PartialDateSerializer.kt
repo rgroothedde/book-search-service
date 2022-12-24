@@ -12,7 +12,11 @@ import java.time.YearMonth
 import java.time.format.DateTimeFormatter
 import java.time.temporal.Temporal
 
-object TemporalSerializer : KSerializer<Temporal> {
+/**
+ * (De)serializes partial dates, for example dates with only month and year.
+ * The following formats are supported: 2022, 2022-02, 2022-02-30
+ */
+object PartialDateSerializer : KSerializer<Temporal> {
     override val descriptor: SerialDescriptor = PrimitiveSerialDescriptor("Temporal", PrimitiveKind.STRING)
 
     override fun deserialize(decoder: Decoder): Temporal {
